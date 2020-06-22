@@ -1,0 +1,55 @@
+.loading_form {
+
+    padding: 160px 0px;
+    width: 641px;
+    background: url('../img/loading-modal.png') no-repeat;
+    
+}
+
+.left-l{
+    float:left;
+    padding: 0px 34px;
+    margin-top: 23px;
+    margin-left: 60px;
+}
+
+.loading-opponent-waiting{
+    margin-top: 30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500px;
+    font-size: 14px;
+    line-height: 100%;
+    color: #FFFFFF;
+}
+
+.loading-opponent-user{
+    margin-top: -10px;
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.loading-opponent-cancel{
+    
+    padding: 20px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500px;
+    font-size: 14px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #868686;
+}
+.loading-opponent-cancel:hover{
+    color: #f3f1f1;
+    cursor: pointer
+}
+
+

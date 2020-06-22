@@ -1,0 +1,134 @@
+
+.authentication{
+    margin: 30px 0px 0px 0px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.authentication .blockButtons{
+    margin: 10px 0px 0px 0px;
+}
+
+.reg-auth{
+    margin: 11px;
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+.reg-text-value{
+    width: 250px;
+    margin: 8px;
+    height: 40px;
+    background: radial-gradient(66.91% 111% at 50% 0%, #000000 0%, #313131 100%);
+    border: 1px solid #2C2C2C;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9), inset 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #2C2C2C,#2C2C2C );
+    border-image-slice: 10;
+    background-origin: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    align-items: center;
+    padding-left: 16px;
+    
+    color: #767676;
+}
+.reg-text-value:hover{
+    background: radial-gradient(66.91% 111% at 50% 0%, #000000 0%, #313131 100%);
+    border: 1px solid #2C2C2C;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9), inset 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border-image: linear-gradient(to right, #313131,#000000 );
+    border-image-slice: 10;
+    background-origin: border-box;
+    color: #FFFFFF;
+}
+.reg-error{
+    margin: 0 auto;
+    padding: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 100%;
+    color: #FF4D4D;
+}
+.reg-back{
+    margin: 0 34 auto;
+    width: 120px;
+    height: 40px;
+    background: radial-gradient(66.91% 111% at 50% 0%, #015DB6 0%, #01285F 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #025DB6,#52D0F5 );
+    border-image-slice: 10;
+    background-origin: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #90E8FF;
+}
+.reg-back:hover{
+    background: radial-gradient(66.91% 111% at 50% 0%, #0176E8 0%, #003D94 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border-image: linear-gradient(to right, #00C2FF,#FFFFFF );
+    border-image-slice: 10;
+    background-origin: border-box;
+    color: #FFFFFF;
+}
+.reg-login{
+    margin: 0 -30 auto;
+    width: 120px;
+    height: 40px;
+    background: radial-gradient(66.91% 111% at 50% 0%, #E8941E 0%, #703509 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #947D3B,#FFE98F );
+    border-image-slice: 10;
+    background-origin: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFE98F;
+}
+.reg-login:hover{
+    background: radial-gradient(66.91% 111% at 50% 0%, #FFE072 0%, #C95600 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border-image: linear-gradient(to right, #947D3B,#FFE98F );
+    border-image-slice: 10;
+    background-origin: border-box;
+    color: #FFFFFF;
+}
+
+#reg_error {
+    margin: 0;
+    height: 14px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 100%;
+    color: #FF4D4D;
+}

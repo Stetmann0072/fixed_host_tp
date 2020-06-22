@@ -1,0 +1,95 @@
+.invite{
+    margin: 30px 0px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+#inviteForm .inviteForm_title{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: #FFFFFF;
+    margin: 0px;
+}
+
+#invite_login_game {
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: #FFA800;
+    margin: 0px 0px 40px 0px;
+}
+
+#inviteForm .invite{
+    padding: 50px 0px 0px 0px;
+}
+
+
+#inviteForm .invite .blockButtons{
+    margin: 50px 0px 0px 0px;
+}
+
+#cancel_send_game {
+    background: radial-gradient(66.91% 111% at 50% 0%, #F04444 0%, #640000 97.92%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #AA2323,#FA8E8E );border-image-slice: 10;
+    background-origin: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+#cancel_send_game:hover {
+    background: radial-gradient(66.91% 111% at 50% 0%, #FF8383 0%, #D00000 97.92%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border-image: linear-gradient(to right, #AA2323,#FA8E8E );
+    border-image-slice: 10;
+    background-origin: border-box;
+    color: #FFFFFF;
+}
+
+
+#accept_invite_btn {
+    background: radial-gradient(66.91% 111% at 50% 0%, #2C7500 0%, #00330B 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #006216,#00FF29 );
+    border-image-slice: 10;
+    background-origin: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #BAFF8F;
+}
+
+#accept_invite_btn:hover {
+    background: radial-gradient(66.91% 111% at 50% 0%, #49BF00 0%, #004910 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border-image: linear-gradient(to right, #006216,#00FF29 );
+    border-image-slice: 10;
+    background-origin: border-box;
+    color: #FFFFFF;
+}
+
+
+

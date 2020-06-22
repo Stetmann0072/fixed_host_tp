@@ -1,0 +1,255 @@
+
+  .placement_back{
+    width: 800px;
+    height: 600px;
+    background: url(../img/ship-panel.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .placement{
+    display: flex;
+    flex-direction: column;
+    width: 750px;
+    height: 400px;
+    margin-top: 20px;
+  }
+  .placement_array{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+   
+  }
+  #ago{
+    flex-basis: content;
+    height: 30px;
+    width: 100px;
+    margin-left: 40px;
+  }
+  .placement .blockButtons {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .placement .blockButtons button{
+    flex-basis: 20%;
+    margin-left: 30px;
+    margin-right: 30px;
+    background: radial-gradient(66.91% 111% at 50% 0%, #4D4D4D 0%, #000000 100%), radial-gradient(66.91% 111% at 50% 0%, #015DB6 0%, #01285F 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #303030,#949494 );
+    border-image-slice: 10;
+    background-origin: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+  }
+  
+
+
+  .placement .blockButtons button .value{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   
+  }
+
+  .placement .blockButtons button img{
+    mix-blend-mode: screen;
+   
+  }
+
+  .placement .blockButtons p{
+    padding-left: 17px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-top: 5px;
+    
+    
+  }
+
+
+  .placement_array .table_map{
+    flex-basis: 50%;
+    background: url(../img/sea-field.png) no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+  }
+  .placement_array .table_map table{
+      margin-top: 15px;
+      margin-bottom: 15px;
+      border: 1px solid #BCF1FF;
+  }
+
+.footer button{
+  height: 30px;
+  margin-left: 40px;
+  margin-top: 10px;
+}
+.footer #randomInput{
+  height: 35px;
+  width: 302px;
+}
+
+.footer #restartPlacement{
+  height: 35px;
+  margin-left: 50px;
+}
+.footer #startGame{
+    height: 35px;
+    margin-left: 70px;
+    background: radial-gradient(66.91% 111% at 50% 0%, #2C7500 0%, #00330B 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #006216,#00FF29 );
+    border-image-slice: 10;
+    background-origin: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #BAFF8F;
+}
+
+.footer  #waitInvite{
+  display: none;
+}
+  
+.footer  #sendInvite{
+  height: 35px;
+  display: none;
+}
+
+#startGame:hover{
+    background: radial-gradient(66.91% 111% at 50% 0%, #49BF00 0%, #004910 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border-image: linear-gradient(to right, #006216,#00FF29 );
+    border-image-slice: 10;
+    background-origin: border-box;
+    color: #FFFFFF;
+}
+  
+.footer2 button{
+    height: 30px;
+    margin-left: 0px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.footer2  #randomInput{
+  height: 35px;
+  width: 220px;
+  margin-left: 40px;
+}
+.footer2   #restartPlacement{
+  height: 35px;
+}
+  
+.footer2  #waitInvite{
+  height: 35px;
+}
+  
+.footer2  #sendInvite{
+  height: 35px;
+  background: radial-gradient(66.91% 111% at 50% 0%, #E8941E 0%, #703509 100%);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+  border: 1px solid transparent;
+  border-image: linear-gradient(to right, #947D3B,#FFE98F );
+  border-image-slice: 10;
+  background-origin: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFE98F;
+}
+.footer2  #sendInvite:hover{
+  background: radial-gradient(66.91% 111% at 50% 0%, #FFE072 0%, #C95600 100%);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+  border-image: linear-gradient(to right, #947D3B,#FFE98F );
+  border-image-slice: 10;
+  background-origin: border-box;
+  color: #FFFFFF;
+}
+  
+.footer2 #startGame{
+  display: none;
+}
+
+
+#shipSize4 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#shipSize3 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+ 
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#shipSize2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+ 
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#shipSize1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+ 
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.activeSizeBtn {
+   
+    background: radial-gradient(66.91% 111% at 50% 0%, #015DB6 0%, #01285F 100%) !important;
+    border: 1px solid transparent !important;
+    border-image: linear-gradient(to right, #025DB6,#52D0F5 ) !important;
+    
+}
+
+  

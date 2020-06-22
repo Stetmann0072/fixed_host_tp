@@ -1,0 +1,226 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game_area{
+    margin: auto;
+    display: flex;
+    
+    justify-content: space-between;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 1300px;
+    height: 700px;
+    overflow: auto;
+    background: url('../img/game-fon.png') no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.game_area .ships{
+    padding-top: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+    width: 240px;
+}
+.game_area .ships h1{
+    margin: 30px 0px 30px 0px;
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+
+.game_area .ships .ship{ 
+    margin-top: 5px;
+    background: radial-gradient(66.91% 111% at 50% 0%, #647179 0%, #152B30 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    background-blend-mode: multiply, normal;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    background-blend-mode: multiply, normal;
+    border-radius: 4px;
+    border: 1px solid #949494;
+    border-image-slice: 10;
+    background-origin: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition-property: box-shadow;
+    transition-duration: 3s;
+}
+
+.kill_ship{
+    background: radial-gradient(66.91% 111% at 50% 0%, #FF7A7A 0%, #790000 100%) !important;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9) !important;
+}
+
+.game_area .ships .ship .value{
+    display: flex;
+    flex-direction: column;
+}
+
+#my_map {
+    padding-left: 30px;
+    padding-right: 20px;
+}
+
+#opponent_map {
+    padding-left: 10px;
+    padding-right: 30px;
+}
+
+.game_area .ships .ship img{
+    mix-blend-mode: screen;
+   
+}
+
+.game_area .ships .ship p{
+    padding-left: 17px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin-top: 5px; 
+}
+.game_area .center{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    height: 440px;
+}
+
+.info_player{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 65px 30px 55px;
+   
+}
+
+.info_player h2{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: #697F95;
+    margin: 0;
+}
+
+.info_player p{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    color: #00204E;
+    margin: 0;
+    
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    width: 150px;
+    
+}
+
+.info_player .you{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.info_player .opponent{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.type_game{
+    display: flex;
+    align-items: center;
+}
+.type_game h2{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #00204E;
+}
+
+
+.game_area .maps{
+    position: relative;
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game_area .maps .table_map{
+    flex-basis: 50%;
+    background: url(../img/sea-field.png) no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    margin: 10px 10px 30px 10px;
+}
+
+.game_area .maps .table_map table{
+    margin: 10px;
+    border: 1px solid #BCF1FF;
+}
+
+#capitulate {
+    width: 100px;
+    height: 30px;
+    margin: 150px auto auto auto;
+    background: radial-gradient(66.91% 111% at 50% 0%, #F04444 0%, #640000 97.92%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #AA2323,#FA8E8E );border-image-slice: 10;
+    background-origin: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+#capitulate:hover{
+    background: radial-gradient(66.91% 111% at 50% 0%, #FF8383 0%, #D00000 97.92%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border-image: linear-gradient(to right, #AA2323,#FA8E8E );
+    border-image-slice: 10;
+    background-origin: border-box;
+    color: #FFFFFF;
+}

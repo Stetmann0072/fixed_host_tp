@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea Battle1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./public/style/style.css">
+    <link rel="stylesheet" type="text/css" href="./public/style/reg.css">
+    <link rel="stylesheet" type="text/css" href="./public/style/auth.css">
+    <link rel="stylesheet" type="text/css" href="./public/style/placement.css">
+    <link rel="stylesheet" type="text/css" href="./public/style/game.css">
+    <link rel="stylesheet" type="text/css" href="./public/style/loading-opp.css">
+    <link rel="stylesheet" type="text/css" href="./public/style/notify.css">
+    <link rel="stylesheet" type="text/css" href="./public/style/gameFriend.css">
+    <link rel="stylesheet" type="text/css" href="./public/style/inviteForm.css">
+    <link rel="stylesheet" type="text/css" href="./public/style/rules.css">
+    <link rel="stylesheet" type="text/css" href="./public/style/post.css">
+    <link rel="stylesheet" type="text/css" href="./public/style/news.css">
+</head>
+<body>
+    <div id = "startMenu" class = "modal">
+        <div class = "startMenu_parrent" >
+            
+            <div class="blockNews"></div>
+            
+            <div class="info">
+                <div id = "menu_block" class = "menu">
+                    <div id = "accountBlock"  class="accountBlock">
+                        <div id = "auth_start">
+                            <button id = 'authBtn' class="accountBtn" >Вход</button>
+                            <button id = 'registrationBtn' class="accountBtn">Регистрация</button>
+                        </div>
+                        <div id = "auth_succes">
+                            <div class = "user">
+                                <h1>Пользователь</h1>
+                                <h2 id = "login_user"></h2>
+                            </div>
+                            <button id = "out_acc">
+                                <svg class="padding-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15 12.5V10H8.75V7.5H15V5L18.75 8.75L15 12.5ZM13.75 11.25V16.25H7.5V20L0 16.25V0H13.75V6.25H12.5V1.25H2.5L7.5 3.75V15H12.5V11.25H13.75Z" fill="#90E8FF"/>
+                                </svg>
+                            ВЫЙТИ</button>
+                        </div>
+                    </div>
+                    <button id = 'randomOpponent'>Случайный игрок</button>
+                    <button id = "singleGame">Игра с ботом</button>
+                    <button id = "GameWithFriend">Игра с другом</button>
+                    <p id="read_rules">ЧИТАТЬ ПРАВИЛА</p>
+                </div>
+                 <div id = "registration_block" class = "authentication">
+                    <h1 class ="reg-auth">РЕГИСТРАЦИЯ</h1>
+                    <input class = "reg-text-value" id = "login" type="text" placeholder="ЛОГИН" maxlength="20">
+                    <input class = "reg-text-value" id = "password" type="password" placeholder="ПАРОЛЬ" maxlength="20" >
+                    <input class = "reg-text-value" id = "cpassword" type="password" placeholder="ПОВТОРИТЕ ПАРОЛЬ" maxlength="20" >
+                    <p id = "reg_error"></p>
+                    <div class = "blockButtons">
+                        <button class = "reg-back" id = "ago_reg">НАЗАД</button>
+                        <button class = "reg-login" id = "register">РЕГИСТРАЦИЯ</button> 
+                    </div>
+                </div>
+                <div id = "authentication_block" class = "authentication">
+                    <h1 class ="auth-auth">АВТОРИЗАЦИЯ</h1>
+                    <input class = "auth-text-value" id = "auth-login" type="text" placeholder="ЛОГИН" maxlength="20">
+                    <input class = "auth-text-value" id = "auth-password" type="password" placeholder="ПАРОЛЬ" maxlength="20">
+                    <p id = "auth_error"></p>
+                    <div class = "blockButtons">
+                        <button class = "auth-back" id = "ago_auth">НАЗАД</button>
+                        <button class = "auth-login" id = "auth">ВОЙТИ</button> 
+                    </div>
+                </div>
+            </div>
+
+            <div class = "blockNews">
+                <div class = "right-page-news">
+                    <div class = "scroll-tool">
+                        
+                        <div id = "news1" class = "right-post">
+                            <div class="left-block-post">
+                                <img src="public/post-images/image1.png" width="112" height="112">
+                            </div>  
+                            <div class="right-block-post">
+                                <h1 class = "right-post-maintext">
+                                    Обновление 10.06.2020
+                                </h1>
+                                <p class = "right-post-simpletext">
+                                   Разработаны правила игры
+                                </p>
+                                <p class = "post-read-modal">
+                                    ЧИТАТЬ
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class = "right-post">
+                            <div class="left-block-post">
+                                <img src="public/post-images/image2.png" width="112" height="112">
+                            </div>  
+                            <div class="right-block-post">
+                                <h1 class = "right-post-maintext">
+                                    Обновление 01.06.2020
+                                </h1>
+                                <p class = "right-post-simpletext">
+                                  Добавлена возможность ручной расстановки кораблей
+                                </p>
+                                <p class = "post-read-modal">
+                                   
+                                </p>
+                            </div>
+                        </div>
+    
+                        <div class = "right-post">
+                            <div class="left-block-post">
+                                <img src="public/post-images/image3.png" width="112" height="112">
+                            </div>  
+                            <div class="right-block-post">
+                                <h1 class = "right-post-maintext">
+                                    Обновление 20.05.2020
+                                </h1>
+                                <p class = "right-post-simpletext">
+                                    Жить стало лучше, жить стало веселей, потому что Боту добавлен интеллект!
+                                </p>
+                                <p class = "post-read-modal">
+                                    
+                                </p>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+            
+        
+        </div>
+    </div>
+
+    <div id = "readRulesForm" class = "modal">
+        <div class = "modal_parrent">
+            
+            <div class = "modal-2">
+                <div class = "modal-2-page">
+                    <div class = "modal-2-cent">
+                        <button class = "modal-2-back" id = "ago_read_rules">НАЗАД</button>
+
+                        <center>
+                            <h1 class = "modal-2-newstext">
+                                Правила игры
+                            </h1>
+                        </center>
+
+                        <div class ="modal-2-rules-scrollbar">
+                            <div class ="scrollable">
+                                <p class = "modal-2-rules">
+                                    Общие правила Морской бой – пошаговая стратегическая игра. Игра предназначена для двух игроков. Каждый игрок управляет флотом, состоящим из определённого количества кораблей, размещённых на своём поле боя размером 10х10 клеток.             
+                                </p>
+
+                                <p class = "modal-2-rules">
+                                    В состав флота входят следующие корабли: 
+                                    - один четырёхпалубный, 
+                                    - два трёхпалубных, 
+                                    - три двухпалубных, 
+                                    - четыре однопалубных.
+                                </p>
+
+                                <p class = "modal-2-rules">
+                                    Перед началом игры игрок последовательно размещает свои корабли – по одному кораблю каждого типа в порядке убывания количества палуб. Одиночным нажатием на левую кнопку мыши можно вращать корабль на девяносто градусов, двойным нажатием – ставить. Корабли должны полностью вмещаться на поле боя и палубы разных кораблей не должны находиться на соседних клетках, даже по диагонали. На этапе расстановки при перемещении курсора по клеткам подсвечиваются клетки, на которых игрок пытается поместить корабль. Если все условия соблюдены, то клетки подсвечиваются зелёным и корабль можно ставить, иначе – красным и корабль нельзя ставить. Сколько времени даётся на расстановку кораблей и что происходит сразу после этого описано ниже для каждого режима игры. После того, как подготовительный этап закончен, начинается сама игра. Цель игры – потопить весь флот врага. Игрок, который первым уничтожит все корабли врага, побеждает. В начале игры генератором случайных чисел определяется, кто ходит первым, после чего начинается игра «Морской бой» по стандартным правилам – игроки по очереди ходят и делают по одному выстрелу в выбранную клетку на поле боя врага. При наведении на клетку зелёным цветом подсвечиваются клетки, куда игрок ещё не стрелял, в таком случае можно стрелять. Если же игрок уже стрелял в клетку, независимо от того был там враг или нет, в неё нельзя стрелять повторно и она подсветится красным цветом. И так продолжается пока один из игроков не выиграет. В любое время игрок может нажать на кнопку «Сдаться», чтобы закончить игру. Особенности одиночной игры Игроку даётся неограниченное количество времени на расстановку кораблей.
+                                </p>
+                                
+                                <p class = "modal-2-rules"
+                                >После расстановки кораблей, игрок может в любое время нажать кнопку «Готов». Ход игрока неограничен по времени Особенности сетевой игры Каждому игроку на расстановку всех кораблей даётся минута. Корабли, которые игрок не успел расставить, будут автоматически расставлены случайным образом, но с соблюдением правил о расстановке, после чего игра сразу начинается, пропуская этап с кнопкой «Готов». Если после расстановки кораблей ещё осталось время, то каждый игрок может нажать кнопку «Готов» и игра начнётся заранее. Каждому игроку даётся 15 секунд на ход, если игрок не успевает за это время сходить, то ход переходит противнику.                 </p>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id = "news1Form" class = "modal">
+        <div class = "modal_parrent">
+            <div class = "modal-1">
+                <div class = "modal-1-page">
+                  <button class = "modal-1-back" id = "ago_newsForm">НАЗАД</button>
+                    <div class = "modal-1-cent">
+                        <div class = "modal-1-left">
+                          <img src="public/post-images/shippost-image1.png" width="300" height="300">
+                        </div>
+
+                        <div class = "modal-1-right">
+                          <h1 class = "modal-1-newstext">
+                              Добавлены правила игры
+                          </h1>
+                          <h2 class = "modal-1-date">
+                            10.06.2020
+                          </h2>
+                          <div class ="modal-1-rules-scrollbar">
+                              <div class ="scrollable">
+                                  <p class = "modal-1-rules">
+                                      Общие правила Морской бой – пошаговая стратегическая игра. Игра предназначена для двух игроков. Каждый игрок управляет флотом, состоящим из определённого количества кораблей, размещённых на своём поле боя размером 10х10 клеток.             
+                                  </p>
+
+                                  <p class = "modal-1-rules">
+                                      В состав флота входят следующие корабли: 
+                                      - один четырёхпалубный, 
+                                      - два трёхпалубных, 
+                                      - три двухпалубных, 
+                                      - четыре однопалубных.
+                                  </p>
+
+                                  <p class = "modal-1-rules">
+                                      Перед началом игры игрок последовательно размещает свои корабли – по одному кораблю каждого типа в порядке убывания количества палуб. Одиночным нажатием на левую кнопку мыши можно вращать корабль на девяносто градусов, двойным нажатием – ставить. Корабли должны полностью вмещаться на поле боя и палубы разных кораблей не должны находиться на соседних клетках, даже по диагонали. На этапе расстановки при перемещении курсора по клеткам подсвечиваются клетки, на которых игрок пытается поместить корабль. Если все условия соблюдены, то клетки подсвечиваются зелёным и корабль можно ставить, иначе – красным и корабль нельзя ставить. Сколько времени даётся на расстановку кораблей и что происходит сразу после этого описано ниже для каждого режима игры. После того, как подготовительный этап закончен, начинается сама игра. Цель игры – потопить весь флот врага. Игрок, который первым уничтожит все корабли врага, побеждает. В начале игры генератором случайных чисел определяется, кто ходит первым, после чего начинается игра «Морской бой» по стандартным правилам – игроки по очереди ходят и делают по одному выстрелу в выбранную клетку на поле боя врага. При наведении на клетку зелёным цветом подсвечиваются клетки, куда игрок ещё не стрелял, в таком случае можно стрелять. Если же игрок уже стрелял в клетку, независимо от того был там враг или нет, в неё нельзя стрелять повторно и она подсветится красным цветом. И так продолжается пока один из игроков не выиграет. В любое время игрок может нажать на кнопку «Сдаться», чтобы закончить игру. Особенности одиночной игры Игроку даётся неограниченное количество времени на расстановку кораблей.
+                                  </p>
+                                  
+                                  <p class = "modal-1-rules"
+                                  >После расстановки кораблей, игрок может в любое время нажать кнопку «Готов». Ход игрока неограничен по времени Особенности сетевой игры Каждому игроку на расстановку всех кораблей даётся минута. Корабли, которые игрок не успел расставить, будут автоматически расставлены случайным образом, но с соблюдением правил о расстановке, после чего игра сразу начинается, пропуская этап с кнопкой «Готов». Если после расстановки кораблей ещё осталось время, то каждый игрок может нажать кнопку «Готов» и игра начнётся заранее. Каждому игроку даётся 15 секунд на ход, если игрок не успевает за это время сходить, то ход переходит противнику.                 </p>
+                                
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id = "placementShip" class="modal">
+        <div  class="modal_parrent" >
+            <div  id = "placementShipBack" class = "placement_back"  >
+                <div class="placement">
+                    <div><button id = "ago">Назад</button></div>
+                    <div class="placement_array">
+                        <div class = "blockButtons">
+                            <button  id = "btnshipSize4">
+                                <div id = "shipSize4" >
+                                    <div class = "value">
+                                        <p >ЧЕТЫРЕХПАЛУБНЫЙ</p>
+                                        <img src="public/img/ship-4.png" width="202" height="38">        
+                                    </div>
+                                    <p id = "placement_4size_value">1 ед.</p>
+                                </div>
+                                
+                            </button>
+                            <button id = "btnshipSize3">
+                                <div id = "shipSize3">
+                                    <div class = "value">
+                                        <p >ТРЕХПАЛУБНЫЙ</p>
+                                        <img src="public/img/ship-3.png"  width="172" height="38">        
+                                    </div>
+                                    <p id = "placement_3size_value">2 ед.</p>
+                                </div>
+                            </button>
+                            <button  id = "btnshipSize2">
+                                <div id = "shipSize2">
+                                    <div class = "value">
+                                        <p >ДВУХПАЛУБНЫЙ</p>
+                                        <img src="public/img/ship-2.png"  width="122" height="38">        
+                                    </div>
+                                    <p id = "placement_2size_value">3 ед.</p>
+                                </div>
+                            </button>
+                            <button  id = "btnshipSize1">
+                                <div id = "shipSize1">
+                                    <div class = "value">
+                                        <p >ОДНОПАЛУБНЫЙ</p>
+                                        <img src="public/img/ship-1.png"  width="100" height="38">        
+                                    </div>
+                                    <p id = "placement_1size_value">4 ед.</p>
+                                </div>
+                                
+                            </button>
+
+                        </div>
+                        <div class = "table_map">
+                            <table id="placementMap"><!--Игровое поле-->
+                                <tr>
+                                    <td id="00"></td>
+                                    <td id="01"></td>
+                                    <td id="02"></td>
+                                    <td id="03"></td>
+                                    <td id="04"></td>
+                                    <td id="05"></td>
+                                    <td id="06"></td>
+                                    <td id="07"></td>
+                                    <td id="08"></td>
+                                    <td id="09"></td>
+                                </tr>
+                                <tr>
+                                    <td id="10"></td>
+                                    <td id="11"></td>
+                                    <td id="12"></td>
+                                    <td id="13"></td>
+                                    <td id="14"></td>
+                                    <td id="15"></td>
+                                    <td id="16"></td>
+                                    <td id="17"></td>
+                                    <td id="18"></td>
+                                    <td id="19"></td>
+                                </tr>
+                                <tr>
+                                    <td id="20"></td>
+                                    <td id="21"></td>
+                                    <td id="22"></td>
+                                    <td id="23"></td>
+                                    <td id="24"></td>
+                                    <td id="25"></td>
+                                    <td id="26"></td>
+                                    <td id="27"></td>
+                                    <td id="28"></td>
+                                    <td id="29"></td>
+                                </tr>
+                                <tr>
+                                    <td id="30"></td>
+                                    <td id="31"></td>
+                                    <td id="32"></td>
+                                    <td id="33"></td>
+                                    <td id="34"></td>
+                                    <td id="35"></td>
+                                    <td id="36"></td>
+                                    <td id="37"></td>
+                                    <td id="38"></td>
+                                    <td id="39"></td>
+                                </tr>
+                                <tr>
+                                    <td id="40"></td>
+                                    <td id="41"></td>
+                                    <td id="42"></td>
+                                    <td id="43"></td>
+                                    <td id="44"></td>
+                                    <td id="45"></td>
+                                    <td id="46"></td>
+                                    <td id="47"></td>
+                                    <td id="48"></td>
+                                    <td id="49"></td>
+                                </tr>
+                                <tr>
+                                    <td id="50"></td>
+                                    <td id="51"></td>
+                                    <td id="52"></td>
+                                    <td id="53"></td>
+                                    <td id="54"></td>
+                                    <td id="55"></td>
+                                    <td id="56"></td>
+                                    <td id="57"></td>
+                                    <td id="58"></td>
+                                    <td id="59"></td>
+                                </tr>
+                                <tr>
+                                    <td id="60"></td>
+                                    <td id="61"></td>
+                                    <td id="62"></td>
+                                    <td id="63"></td>
+                                    <td id="64"></td>
+                                    <td id="65"></td>
+                                    <td id="66"></td>
+                                    <td id="67"></td>
+                                    <td id="68"></td>
+                                    <td id="69"></td>
+                                </tr>
+                                <tr>
+                                    <td id="70"></td>
+                                    <td id="71"></td>
+                                    <td id="72"></td>
+                                    <td id="73"></td>
+                                    <td id="74"></td>
+                                    <td id="75"></td>
+                                    <td id="76"></td>
+                                    <td id="77"></td>
+                                    <td id="78"></td>
+                                    <td id="79"></td>
+                                </tr>
+                                <tr>
+                                    <td id="80"></td>
+                                    <td id="81"></td>
+                                    <td id="82"></td>
+                                    <td id="83"></td>
+                                    <td id="84"></td>
+                                    <td id="85"></td>
+                                    <td id="86"></td>
+                                    <td id="87"></td>
+                                    <td id="88"></td>
+                                    <td id="89"></td>
+                                </tr>
+                                <tr>
+                                    <td id="90"></td>
+                                    <td id="91"></td>
+                                    <td id="92"></td>
+                                    <td id="93"></td>
+                                    <td id="94"></td>
+                                    <td id="95"></td>
+                                    <td id="96"></td>
+                                    <td id="97"></td>
+                                    <td id="98"></td>
+                                    <td id="99"></td>
+                                </tr>
+                            </table>
+                            </div>
+                    </div>
+                    <div id = "placement_footer" class = "footer" >
+                        <button id = "randomInput">Случайная расстановка</button>
+                        <button id = "restartPlacement">Очистить поле</button>
+                        <button id = "startGame">Начать игру</button>
+                    
+                        <button id = "waitInvite">Ждать приглашение</button>
+                        <button id = "sendInvite">Отправить приглашение</button>
+                        
+                    </div>
+                   
+                </div>
+            </div>
+            <div id = "sendInviteForm" class = "info" style="display: none;">
+                <div  class = "invite">
+                    <h1 class ="auth-auth">ОТПРАВИТЬ ПРИГЛАШЕНИЕ</h1>
+                    <input class = "auth-text-value" id = "send_game_login" type="text" placeholder="ЛОГИН ОППОНЕНТА" maxlength="20">
+                    <p id = "send_game_error"></p>
+                    <div class = "blockButtons">
+                        <button class = "auth-back" id = "ago_send_game">НАЗАД</button>
+                        <button class = "auth-login" id = "send_invite_btn">ОТПРАВИТЬ</button> 
+                    </div>
+                </div>
+            </div>
+
+            <div id = "waitConfirm" style="display: none;">
+                <div class = "modal_parrent">
+                    <div class = "notify_send">
+                        <div class="field_login">
+                            <h2 class="title">Игра начнется, когда</h2>
+                            <h2 id = "login_game" class = "login_game">Игрок</h2>
+                            <h2 class="title">примет Ваше приглашение</h2>
+                        </div>
+                        <center><button id = "cancelSend">Отклонить</button> </center>
+                    </div>
+                </div>
+            </div>
+
+            <div id = "waitInviteForm" class = "modal" style="display: none;">
+                <div class = "modal_parrent">
+                    <div class = "loading_form">
+                        <img class="left-l" width="60" height="60" src="public/img/loading.gif">
+                        <h2 class = "loading-opponent-waiting">Пожалуйста подождите</h2>
+                        <h2 class = "loading-opponent-user">ОЖИДАНИЕ ПРИГЛАШЕНИЯ</h2>
+                        <center><a id = "cancel_wait_invite" class = "loading-opponent-cancel">ОТМЕНА</a></center>
+                    </div>
+                </div>
+            </div>
+
+            <div id = "inviteForm" class = "info" style="display: none;">
+                <div  class = "invite">
+                    <h2 class="inviteForm_title">ПОЛЬЗОВАТЕЛЬ</h2>
+                    <h2 id = "invite_login_game" >Игрок</h2>
+                    <h2 class="inviteForm_title">ПРИГЛАШАЕТ ВАС В ИГРУ</h2>
+                    <div class = "blockButtons">
+                        <button class = "auth-back" id = "cancel_send_game">ОТКЛОНИТЬ</button>
+                        <button class = "auth-login" id = "accept_invite_btn">ПРИНЯТЬ</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id = "load_opponent" class = "modal">
+        <div class = "modal_parrent">
+            <div class = "loading_form">
+                <img class="left-l" width="60" height="60" src="public/img/loading.gif">
+                <h2 class = "loading-opponent-waiting">Пожалуйста подождите</h2>
+                <h2 class = "loading-opponent-user">ИДЕТ ПОИСК ОППОНЕНТА</h2>
+                <center><a id = "cancel_load" class = "loading-opponent-cancel">ОТМЕНА</a></center>
+            </div>
+        </div>
+    </div>
+    
+    <div id = "game" class = "modal">
+        <div class = "game_area">
+            <div id = "my_map" class = "ships">
+                <h1> Ваши корабли</h1>
+                <button class = "ship" id = "my_4ship">
+                    <div class = "value">
+                        <p >ЧЕТЫРЕХПАЛУБНЫЙ</p>
+                        <img src="public/img/ship-4.png" width="170" height="38">        
+                    </div>
+                    <p id = "my_ship4_value">1 ед.</p>
+                </button>
+                <button class = "ship" id = "my_3ship">
+                    <div class = "value">
+                        <p >ТРЕХПАЛУБНЫЙ</p>
+                        <img src="public/img/ship-3.png"  width="142" height="38">        
+                    </div>
+                    <p id = "my_ship3_value">2 ед.</p>
+                </button>
+                <button class = "ship" id = "my_2ship">
+                    <div class = "value">
+                        <p >ДВУХПАЛУБНЫЙ</p>
+                        <img src="public/img/ship-2.png"  width="102" height="38">        
+                    </div>
+                    <p id = "my_ship2_value">3 ед.</p>
+                </button>
+                <button class = "ship" id = "my_1ship">
+                    <div class = "value">
+                        <p >ОДНОПАЛУБНЫЙ</p>
+                        <img src="public/img/ship-1.png"  width="80" height="38">        
+                    </div>
+                    <p id = "my_ship1_value">4 ед.</p>
+                </button>
+                <button id = "capitulate">СДАТЬСЯ</button>
+            </div>
+            <div class = "center">
+
+                <div class = "info_player">
+                    <div class = "you">
+                        <h2>Вы</h2>
+                        <p id = "you_game_login"></p> 
+                    </div>
+                    <div class = "type_game">
+                        <h2 id = "type_game"> Одиночная игра</h2>
+                    </div>
+                    <div class = "opponent">
+                        <h2>Оппонент</h2>
+                        <p id = "opp_game_login"></p>
+                    </div>
+                </div>
+                
+
+                <div class = "maps">
+                    <div class = "table_map">
+                    <table id="my" ><!--Игровое поле-->
+                        <tr>
+                            <td id="00"></td>
+                            <td id="01"></td>
+                            <td id="02"></td>
+                            <td id="03"></td>
+                            <td id="04"></td>
+                            <td id="05"></td>
+                            <td id="06"></td>
+                            <td id="07"></td>
+                            <td id="08"></td>
+                            <td id="09"></td>
+                        </tr>
+                        <tr>
+                            <td id="10"></td>
+                            <td id="11"></td>
+                            <td id="12"></td>
+                            <td id="13"></td>
+                            <td id="14"></td>
+                            <td id="15"></td>
+                            <td id="16"></td>
+                            <td id="17"></td>
+                            <td id="18"></td>
+                            <td id="19"></td>
+                        </tr>
+                        <tr>
+                            <td id="20"></td>
+                            <td id="21"></td>
+                            <td id="22"></td>
+                            <td id="23"></td>
+                            <td id="24"></td>
+                            <td id="25"></td>
+                            <td id="26"></td>
+                            <td id="27"></td>
+                            <td id="28"></td>
+                            <td id="29"></td>
+                        </tr>
+                        <tr>
+                            <td id="30"></td>
+                            <td id="31"></td>
+                            <td id="32"></td>
+                            <td id="33"></td>
+                            <td id="34"></td>
+                            <td id="35"></td>
+                            <td id="36"></td>
+                            <td id="37"></td>
+                            <td id="38"></td>
+                            <td id="39"></td>
+                        </tr>
+                        <tr>
+                            <td id="40"></td>
+                            <td id="41"></td>
+                            <td id="42"></td>
+                            <td id="43"></td>
+                            <td id="44"></td>
+                            <td id="45"></td>
+                            <td id="46"></td>
+                            <td id="47"></td>
+                            <td id="48"></td>
+                            <td id="49"></td>
+                        </tr>
+                        <tr>
+                            <td id="50"></td>
+                            <td id="51"></td>
+                            <td id="52"></td>
+                            <td id="53"></td>
+                            <td id="54"></td>
+                            <td id="55"></td>
+                            <td id="56"></td>
+                            <td id="57"></td>
+                            <td id="58"></td>
+                            <td id="59"></td>
+                        </tr>
+                        <tr>
+                            <td id="60"></td>
+                            <td id="61"></td>
+                            <td id="62"></td>
+                            <td id="63"></td>
+                            <td id="64"></td>
+                            <td id="65"></td>
+                            <td id="66"></td>
+                            <td id="67"></td>
+                            <td id="68"></td>
+                            <td id="69"></td>
+                        </tr>
+                        <tr>
+                            <td id="70"></td>
+                            <td id="71"></td>
+                            <td id="72"></td>
+                            <td id="73"></td>
+                            <td id="74"></td>
+                            <td id="75"></td>
+                            <td id="76"></td>
+                            <td id="77"></td>
+                            <td id="78"></td>
+                            <td id="79"></td>
+                        </tr>
+                        <tr>
+                            <td id="80"></td>
+                            <td id="81"></td>
+                            <td id="82"></td>
+                            <td id="83"></td>
+                            <td id="84"></td>
+                            <td id="85"></td>
+                            <td id="86"></td>
+                            <td id="87"></td>
+                            <td id="88"></td>
+                            <td id="89"></td>
+                        </tr>
+                        <tr>
+                            <td id="90"></td>
+                            <td id="91"></td>
+                            <td id="92"></td>
+                            <td id="93"></td>
+                            <td id="94"></td>
+                            <td id="95"></td>
+                            <td id="96"></td>
+                            <td id="97"></td>
+                            <td id="98"></td>
+                            <td id="99"></td>
+                        </tr>
+                    </table>
+                    </div>
+                    <div class = "table_map">
+                    <table id="opponent" ><!--Игровое поле-->
+                        <tr>
+                            <td id="00"></td>
+                            <td id="01"></td>
+                            <td id="02"></td>
+                            <td id="03"></td>
+                            <td id="04"></td>
+                            <td id="05"></td>
+                            <td id="06"></td>
+                            <td id="07"></td>
+                            <td id="08"></td>
+                            <td id="09"></td>
+                        </tr>
+                        <tr>
+                            <td id="10"></td>
+                            <td id="11"></td>
+                            <td id="12"></td>
+                            <td id="13"></td>
+                            <td id="14"></td>
+                            <td id="15"></td>
+                            <td id="16"></td>
+                            <td id="17"></td>
+                            <td id="18"></td>
+                            <td id="19"></td>
+                        </tr>
+                        <tr>
+                            <td id="20"></td>
+                            <td id="21"></td>
+                            <td id="22"></td>
+                            <td id="23"></td>
+                            <td id="24"></td>
+                            <td id="25"></td>
+                            <td id="26"></td>
+                            <td id="27"></td>
+                            <td id="28"></td>
+                            <td id="29"></td>
+                        </tr>
+                        <tr>
+                            <td id="30"></td>
+                            <td id="31"></td>
+                            <td id="32"></td>
+                            <td id="33"></td>
+                            <td id="34"></td>
+                            <td id="35"></td>
+                            <td id="36"></td>
+                            <td id="37"></td>
+                            <td id="38"></td>
+                            <td id="39"></td>
+                        </tr>
+                        <tr>
+                            <td id="40"></td>
+                            <td id="41"></td>
+                            <td id="42"></td>
+                            <td id="43"></td>
+                            <td id="44"></td>
+                            <td id="45"></td>
+                            <td id="46"></td>
+                            <td id="47"></td>
+                            <td id="48"></td>
+                            <td id="49"></td>
+                        </tr>
+                        <tr>
+                            <td id="50"></td>
+                            <td id="51"></td>
+                            <td id="52"></td>
+                            <td id="53"></td>
+                            <td id="54"></td>
+                            <td id="55"></td>
+                            <td id="56"></td>
+                            <td id="57"></td>
+                            <td id="58"></td>
+                            <td id="59"></td>
+                        </tr>
+                        <tr>
+                            <td id="60"></td>
+                            <td id="61"></td>
+                            <td id="62"></td>
+                            <td id="63"></td>
+                            <td id="64"></td>
+                            <td id="65"></td>
+                            <td id="66"></td>
+                            <td id="67"></td>
+                            <td id="68"></td>
+                            <td id="69"></td>
+                        </tr>
+                        <tr>
+                            <td id="70"></td>
+                            <td id="71"></td>
+                            <td id="72"></td>
+                            <td id="73"></td>
+                            <td id="74"></td>
+                            <td id="75"></td>
+                            <td id="76"></td>
+                            <td id="77"></td>
+                            <td id="78"></td>
+                            <td id="79"></td>
+                        </tr>
+                        <tr>
+                            <td id="80"></td>
+                            <td id="81"></td>
+                            <td id="82"></td>
+                            <td id="83"></td>
+                            <td id="84"></td>
+                            <td id="85"></td>
+                            <td id="86"></td>
+                            <td id="87"></td>
+                            <td id="88"></td>
+                            <td id="89"></td>
+                        </tr>
+                        <tr>
+                            <td id="90"></td>
+                            <td id="91"></td>
+                            <td id="92"></td>
+                            <td id="93"></td>
+                            <td id="94"></td>
+                            <td id="95"></td>
+                            <td id="96"></td>
+                            <td id="97"></td>
+                            <td id="98"></td>
+                            <td id="99"></td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+            </div>
+            <div id = "opponent_map" class = "ships"> 
+                <h1>Корабли оппонента</h1>
+                <button  class = "ship" id = "opp_4ship">
+                    <div class = "value">
+                        <p >ЧЕТЫРЕХПАЛУБНЫЙ</p>
+                        <img src="public/img/ship-4.png" width="170" height="38">        
+                    </div>
+                    <p id = "opp_ship4_value">1 ед.</p>
+                </button>
+                <button  class = "ship" id = "opp_3ship">
+                    <div class = "value">
+                        <p >ТРЕХПАЛУБНЫЙ</p>
+                        <img src="public/img/ship-3.png"  width="142" height="38">        
+                    </div>
+                    <p  id = "opp_ship3_value">2 ед.</p>
+                </button>
+                <button class = "ship" id = "opp_2ship">
+                    <div class = "value">
+                        <p >ДВУХПАЛУБНЫЙ</p>
+                        <img src="public/img/ship-2.png"  width="102" height="38">        
+                    </div>
+                    <p  id = "opp_ship2_value">3 ед.</p>
+                </button>
+                <button  class = "ship" id = "opp_1ship">
+                    <div class = "value">
+                        <p >ОДНОПАЛУБНЫЙ</p>
+                        <img src="public/img/ship-1.png"  width="80" height="38">        
+                    </div>
+                    <p  id = "opp_ship1_value">4 ед.</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id = "notify" style="display: none;">
+        <div class = "notify_parrent">
+            <div class = "notify">
+                <h2 id = "result_game1">Поздравляем!</h2>
+                <h2 id = "result_game2">ВЫ ПОБЕДИЛИ!</h2>
+                <button id = "ok">ОК</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="./public/javascript/script.js"></script>
+</body>
+</html>

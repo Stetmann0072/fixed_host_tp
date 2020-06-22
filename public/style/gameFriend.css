@@ -1,0 +1,97 @@
+#sendInviteForm .authentication{
+
+    margin-top: 40px;
+}
+
+#send_game_error {
+    margin: 0;
+    height: 14px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 100%;
+    color: #FF4D4D;
+}
+.login_game {
+    float: left;
+    margin: 0px;
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: #FFA800;
+
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    max-width: 350px;
+}
+#waitConfirm .title {
+    float: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: #FFFFFF;
+    margin: 0px;
+}
+
+#cancelSend {
+    width: 150px;
+    height: 40px;
+
+    background: radial-gradient(66.91% 111% at 50% 0%, #F04444 0%, #640000 97.92%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border: 1px solid transparent;
+    border-image: linear-gradient(to right, #AA2323,#FA8E8E );border-image-slice: 10;
+    background-origin: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+
+#cancelSend:hover {
+    background: radial-gradient(66.91% 111% at 50% 0%, #FF8383 0%, #D00000 97.92%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+    border-image: linear-gradient(to right, #AA2323,#FA8E8E );
+    border-image-slice: 10;
+    background-origin: border-box;
+    color: #FFFFFF;
+}
+
+.field_login{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 20px 10px 20px 100px;
+}
+
+#waitConfirm .notify_send{
+    height: 300px;
+    width: 641px;
+    background: url('../img/loading-modal.png') no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+#invite_login_game {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    max-width: 250px;
+}
