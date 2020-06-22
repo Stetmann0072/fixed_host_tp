@@ -16,21 +16,26 @@ var wsServer = new WebSocketServer({
     server: server
 })
 //FIXED
-const mysql = require('mysql');
-const database = mysql.createConnection({
-    host: "localhost",
-    user: "admin",
-    database: "game",
-    password: "123456"
+const {Client} = require('pg');
+const database = new Client({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'games',
+    password: '1234',
+    port: 5432  
   });
+
+console.log(database);
 database.connect(function(err){
     if (err) {
       return console.error("Ошибка: " + err.message);
     }
     else{
-      console.log("Подключение к серверу MySQL успешно установлено");
+      console.log("Подключение к серверу PostgreSQL успешно установлено");
+
     }
 });
+
 
 database.query("SET SESSION wait_timeout = 604800")
 
