@@ -1,58 +1,33 @@
-//FIXED
-var WebSocketServer = require("ws").Server
 const http = require("http");
 const app = require("express")();
 var express = require("express");
-const PORT = process.env.PORT || 9091;
-
 app.use('/public', express.static('public'));
 app.get("/", (req,res)=> res.sendFile(__dirname + "/index.html"))
 
+app.listen(9091, ()=>console.log("Listening on http port 9091"))
 
-var server = http.createServer(app);
-server.listen(PORT);
-console.log("Server listening on %d", PORT);
-var wsServer = new WebSocketServer({
-    server: server
-})
-
-//FIXED
 
 const {Client} = require('pg');
-
 const database = new Client({
-    user: process.env.DATABASE_USER || 'postgres',
-    host: process.env.DATABASE_HOST || 'localhost',
-    database: process.env.DATABASE_NAME || 'newsql',
-    password: process.env.DATABASE_PASSWORD || '123456',
-    port: process.env.DATABASE_PORT || 5432 
-});
+    user: 'postgres',
+    host: 'localhost',
+    database: 'games',
+    password: '1234',
+    port: 5432  
+  });
 
+//console.log(database);
 database.connect((err, client) =>{
     if(err){
         return console.log("ERROR acquiring client",err.stack);
     }
-    client.query("SELECT NOW()", (err,result) =>{
-        
-        if(err){
-            return console.log("ERROR executing query", err.stack);
-        }
-        console.log(result.rows);
-    })
-    
-});
-database.query("INSERT INTO users (login, password, salt) VALUES ('stetmann','stalker','1256361236165236771623')", (err,res)=>{
-    console.log(err,res);
-    //Пробный запрос в базу данных (вставка данных)
-})
-database.query("SELECT * FROM users",(err,res)=>{
-    console.log(err,res);
-    //Пробная выгрузка всех ячеек из таблицы USERS
+    else{
+        console.log("Connetion succes!");
+    }
+
 });
 
 
-
-//database.query("SET SESSION wait_timeout = 604800") //Ошибка тут
 
 var bcrypt = require('bcrypt');
 const clients = {};
@@ -87,85 +62,83 @@ class Player{
     }
     register(info){
         var plr = this;
-        database.query("SELECT login FROM users WHERE BINARY login=?", [info.login], 
-        function(error, data){
-            if (error) throw error;
-            if(data.length > 0 ){
-                console.log("REGISTRATON ERROR!");
+
+        var salt = bcrypt.genSaltSync(10);
+        var pass = bcrypt.hashSync(info.pass, salt);
+        
+
+        database.query('INSERT INTO users(login, password, salt) VALUES($1, $2, $3) RETURNING *', [info.login, pass, salt] , 
+        (err, res) => {
+            if (err) {
+              console.log(err.stack)
+              console.log("REGISTRATON ERROR!");
                 const payLoad = {
                     "method": "resultRegister",
                     "res": "error",
                     "login": info.login
                 }
                 plr.connection.send(JSON.stringify(payLoad));
-                
-            }
-            else {
-                var salt = bcrypt.genSaltSync(10);
-                var pass = bcrypt.hashSync(info.pass, salt);
-                console.log(pass);
-                database.query("INSERT INTO users (login, password, salt) VALUES (?,?,?)",
-                [info.login, pass, salt]);
-                
+            } else {
+                console.log(res.rows[0])
                 console.log("REGISTRATON");
                 plr.setLogin(info.login);
-               
+            
                 const payLoad = {
                     "method": "resultRegister",
                     "res": "success",
                     "login": info.login
                 }
                 plr.connection.send(JSON.stringify(payLoad));
-               
-               
-            }
-        });
-        
+                }
+          })
     }
     auth(info){
         var plr = this;
+
+        console.log(info);
         
-        database.query("SELECT login FROM users WHERE BINARY login=?", [info.login], 
-        function(error, data){
-            if(data.length > 0 ){
-                database.query("SELECT password,salt FROM users WHERE login=?", [info.login], 
-                function(error, data){
-                        
-                        var salt = data[0].salt;
-                        var userPass = bcrypt.hashSync(info.pass, salt);
-                        if (data[0].password != userPass){
-                            console.log("AUTH ERROR!");
-                            console.log(data[0]);
-                            const payLoad = {
-                                "method": "resultAuth",
-                                "res": "password_error",
-                                "login": info.login
-                            }
-                            plr.connection.send(JSON.stringify(payLoad));
-                            
-                        }
-                        else{
-                            console.log("AUTHORIZATION");
-                            plr.setLogin(info.login);
-                            const payLoad = {
-                                "method": "resultAuth",
-                                "res": "success",
-                                "login": info.login
-                            }
-                            plr.connection.send(JSON.stringify(payLoad));
-                        
-                         }
-                });
+        database.query("SELECT login,password,salt FROM users WHERE login = $1", [info.login], 
+        (err, data) => {
+            if (err) {
+                console.log(err.stack)
+               
             }
             else {
-                console.log("AUTH ERROR!");
-                const payLoad = {
-                    "method": "resultAuth",
-                    "res": "LoginNotFound",
-                    "login": info.login
+                var res = data.rows[0]
+                console.log(res);
+
+                if(data.rows.length > 0 ){
+                    var salt = res.salt;
+                    var userPass = bcrypt.hashSync(info.pass, salt);
+                    if (res.password != userPass){
+                        const payLoad = {
+                            "method": "resultAuth",
+                            "res": "password_error",
+                            "login": info.login
+                        }
+                        plr.connection.send(JSON.stringify(payLoad));
+                        
+                    }
+                    else{
+                        plr.setLogin(info.login);
+                        const payLoad = {
+                            "method": "resultAuth",
+                            "res": "success",
+                            "login": info.login
+                        }
+                        plr.connection.send(JSON.stringify(payLoad));
+                    
+                    }
                 }
-                plr.connection.send(JSON.stringify(payLoad));
-              
+                else {
+                    const payLoad = {
+                        "method": "resultAuth",
+                        "res": "LoginNotFound",
+                        "login": info.login
+                    }
+                    plr.connection.send(JSON.stringify(payLoad));
+                  
+                }
             }
         });
       
@@ -216,7 +189,7 @@ class Game{
         this.valueChangeTurn++;
         console.log("старт интервал");
         this.changeTurn = setInterval(() => {
-            this.turn = (this.turn + 1) % 2;
+            this.turn = (this.turn+1)%2;
             console.log("смена хода");
             this.setTurn();
         }, 10000);
@@ -235,18 +208,18 @@ class Game{
     shoot(result){
         clearInterval(this.changeTurn);
         console.log("интервал сброшен");
-        for (let i = 0; i <= 1; i++){
+        for (let i = 0; i <= 1;i++){
             //console.log(result.clientID+" == "+this.gamers[i].id)
             if (result.clientID == this.gamers[i].id){
                 //console.log(this.gamers[i]);
-                this.send(this.gamers[(i + 1) % 2], result);
+                this.send(this.gamers[(i+1)%2], result);
             }
         }
     }
     resultShoot(result){
-        for (let i = 0; i <= 1; i++){
+        for (let i = 0; i <= 1;i++){
             if (result.clientID == this.gamers[i].id){
-                this.send(this.gamers[(i + 1) % 2], result);
+                this.send(this.gamers[(i+1)%2], result);
             }
         }
         var cell = result.res.cell;
@@ -464,25 +437,16 @@ function sendMessage(plr, msg){
         console.log(err);
     }
 }
-
-/*var WebSocketServer = require("ws").Server;
-var WebSocketPort = process.env.PORT2 || 9090;
-var server = http.createServer(app);
-server.listen(WebSocketPort);
-console.log("http server listening on %d", WebSocketPort);
-var wsServer = new WebSocketServer({server: server});
-*/
-
-/*
-FIXED
-*/
-
+var WebSocketServer = new require('ws');
+var wsServer = new WebSocketServer.Server({
+    port: 9090
+});
 wsServer.on('connection', function(connection) {
     
     const clientId = guid();
     clients[clientId] = new Player(clientId, connection);
 
- 
+   
 
     connection.on("close", function(){
         console.log("Отключился! - " + clientId);
