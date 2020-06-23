@@ -71,85 +71,83 @@ class Player{
     }
     register(info){
         var plr = this;
-        database.query("SELECT login FROM users WHERE BINARY login=?", [info.login], 
-        function(error, data){
-            if (error) throw error;
-            if(data.length > 0 ){
-                console.log("REGISTRATON ERROR!");
+
+        var salt = bcrypt.genSaltSync(10);
+        var pass = bcrypt.hashSync(info.pass, salt);
+        
+
+        database.query('INSERT INTO users(login, password, salt) VALUES($1, $2, $3) RETURNING *', [info.login, pass, salt] , 
+        (err, res) => {
+            if (err) {
+              console.log(err.stack)
+              console.log("REGISTRATON ERROR!");
                 const payLoad = {
                     "method": "resultRegister",
                     "res": "error",
                     "login": info.login
                 }
                 plr.connection.send(JSON.stringify(payLoad));
-                
-            }
-            else {
-                var salt = bcrypt.genSaltSync(10);
-                var pass = bcrypt.hashSync(info.pass, salt);
-                console.log(pass);
-                database.query("INSERT INTO users (login, password, salt) VALUES (?,?,?)",
-                [info.login, pass, salt]);
-                
+            } else {
+                console.log(res.rows[0])
                 console.log("REGISTRATON");
                 plr.setLogin(info.login);
-               
+            
                 const payLoad = {
                     "method": "resultRegister",
                     "res": "success",
                     "login": info.login
                 }
                 plr.connection.send(JSON.stringify(payLoad));
-               
-               
-            }
-        });
-        
+                }
+          })
     }
     auth(info){
         var plr = this;
+
+        console.log(info);
         
-        database.query("SELECT login FROM users WHERE BINARY login=?", [info.login], 
-        function(error, data){
-            if(data.length > 0 ){
-                database.query("SELECT password,salt FROM users WHERE login=?", [info.login], 
-                function(error, data){
-                        
-                        var salt = data[0].salt;
-                        var userPass = bcrypt.hashSync(info.pass, salt);
-                        if (data[0].password != userPass){
-                            console.log("AUTH ERROR!");
-                            console.log(data[0]);
-                            const payLoad = {
-                                "method": "resultAuth",
-                                "res": "password_error",
-                                "login": info.login
-                            }
-                            plr.connection.send(JSON.stringify(payLoad));
-                            
-                        }
-                        else{
-                            console.log("AUTHORIZATION");
-                            plr.setLogin(info.login);
-                            const payLoad = {
-                                "method": "resultAuth",
-                                "res": "success",
-                                "login": info.login
-                            }
-                            plr.connection.send(JSON.stringify(payLoad));
-                        
-                         }
-                });
+        database.query("SELECT login,password,salt FROM users WHERE login = $1", [info.login], 
+        (err, data) => {
+            if (err) {
+                console.log(err.stack)
+               
             }
             else {
-                console.log("AUTH ERROR!");
-                const payLoad = {
-                    "method": "resultAuth",
-                    "res": "LoginNotFound",
-                    "login": info.login
+                var res = data.rows[0]
+                console.log(res);
+
+                if(data.rows.length > 0 ){
+                    var salt = res.salt;
+                    var userPass = bcrypt.hashSync(info.pass, salt);
+                    if (res.password != userPass){
+                        const payLoad = {
+                            "method": "resultAuth",
+                            "res": "password_error",
+                            "login": info.login
+                        }
+                        plr.connection.send(JSON.stringify(payLoad));
+                        
+                    }
+                    else{
+                        plr.setLogin(info.login);
+                        const payLoad = {
+                            "method": "resultAuth",
+                            "res": "success",
+                            "login": info.login
+                        }
+                        plr.connection.send(JSON.stringify(payLoad));
+                    
+                    }
                 }
-                plr.connection.send(JSON.stringify(payLoad));
-              
+                else {
+                    const payLoad = {
+                        "method": "resultAuth",
+                        "res": "LoginNotFound",
+                        "login": info.login
+                    }
+                    plr.connection.send(JSON.stringify(payLoad));
+                  
+                }
             }
         });
       
@@ -161,6 +159,8 @@ class Player{
         this.login = "Гость";
     }
 }
+
+    //STAGE 1
 
 class Game{
     constructor([id1, id2], gameID){
