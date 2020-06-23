@@ -41,39 +41,15 @@ database.connect((err, client) =>{
     })
     
 });
-/*database.query("INSERT INTO users (login, password, salt) VALUES ('1','2','3')", (err,res)=>{
-    //console.log(err,res);
-    
-    console.log("database - connected")
-    database.end();
-})*/
+database.query("INSERT INTO users (login, password, salt) VALUES ('stetmann','stalker','1256361236165236771623')", (err,res)=>{
+    console.log(err,res);
+    //Пробный запрос в базу данных (вставка данных)
+})
 database.query("SELECT * FROM users",(err,res)=>{
     console.log(err,res);
-    console.log("database - here")
-    //database.end(); bug 2 fixed
-
+    //Пробная выгрузка всех ячеек из таблицы USERS
 });
-/*const env = process.env.DATABASE_URL;
 
-const {Client} = require('pg');
-const database = new Client({
-    user: process.env.DATABASE_USER || 'postgres',
-    host: process.env.DATABASE_HOST || 'localhost',
-    database: process.env.DATABASE_NAME || 'users',
-    password: process.env.DATABASE_PASSWORD || '123456',
-    port: process.env.DATABASE_PORT || 5432  
-});*/
-/*
-console.log(database);
-database.connect(function(err){
-    if (err) {
-      return console.error("Ошибка: " + err.message);
-    }
-    else{
-      console.log("Подключение к серверу PostgreSQL успешно установлено");
-
-    }
-});*/
 
 
 //database.query("SET SESSION wait_timeout = 604800") //Ошибка тут
