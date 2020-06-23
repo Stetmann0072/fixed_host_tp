@@ -1845,6 +1845,7 @@ class Computer{
       console.log(map);
     }
 
+    
     var x = ship.startCoord[0];
     var y = ship.startCoord[1];
     map.mapArr[x][y] = 3;
