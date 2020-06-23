@@ -15,16 +15,55 @@ console.log("Server listening on %d", PORT);
 var wsServer = new WebSocketServer({
     server: server
 })
+
 //FIXED
+
+const {Client} = require('pg');
+
+const database = new Client({
+    user: process.env.DATABASE_USER || 'postgres',
+    host: process.env.DATABASE_HOST || 'localhost',
+    database: process.env.DATABASE_NAME || 'newsql',
+    password: process.env.DATABASE_PASSWORD || '123456',
+    port: process.env.DATABASE_PORT || 5432 
+});
+
+database.connect((err, client) =>{
+    if(err){
+        return console.log("ERROR acquiring client",err.stack);
+    }
+    client.query("SELECT NOW()", (err,result) =>{
+        
+        if(err){
+            return console.log("ERROR executing query", err.stack);
+        }
+        console.log(result.rows);
+    })
+    
+});
+/*database.query("INSERT INTO users (login, password, salt) VALUES ('1','2','3')", (err,res)=>{
+    //console.log(err,res);
+    
+    console.log("database - connected")
+    database.end();
+})*/
+database.query("SELECT * FROM users",(err,res)=>{
+    console.log(err,res);
+    console.log("database - here")
+    //database.end(); bug 2 fixed
+
+});
+/*const env = process.env.DATABASE_URL;
+
 const {Client} = require('pg');
 const database = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'games',
-    password: '1234',
-    port: 5432  
-  });
-
+    user: process.env.DATABASE_USER || 'postgres',
+    host: process.env.DATABASE_HOST || 'localhost',
+    database: process.env.DATABASE_NAME || 'users',
+    password: process.env.DATABASE_PASSWORD || '123456',
+    port: process.env.DATABASE_PORT || 5432  
+});*/
+/*
 console.log(database);
 database.connect(function(err){
     if (err) {
@@ -34,10 +73,10 @@ database.connect(function(err){
       console.log("Подключение к серверу PostgreSQL успешно установлено");
 
     }
-});
+});*/
 
 
-database.query("SET SESSION wait_timeout = 604800")
+//database.query("SET SESSION wait_timeout = 604800") //Ошибка тут
 
 var bcrypt = require('bcrypt');
 const clients = {};
@@ -201,7 +240,7 @@ class Game{
         this.valueChangeTurn++;
         console.log("старт интервал");
         this.changeTurn = setInterval(() => {
-            this.turn = (this.turn+1)%2;
+            this.turn = (this.turn + 1) % 2;
             console.log("смена хода");
             this.setTurn();
         }, 10000);
@@ -220,18 +259,18 @@ class Game{
     shoot(result){
         clearInterval(this.changeTurn);
         console.log("интервал сброшен");
-        for (let i = 0; i <= 1;i++){
+        for (let i = 0; i <= 1; i++){
             //console.log(result.clientID+" == "+this.gamers[i].id)
             if (result.clientID == this.gamers[i].id){
                 //console.log(this.gamers[i]);
-                this.send(this.gamers[(i+1)%2], result);
+                this.send(this.gamers[(i + 1) % 2], result);
             }
         }
     }
     resultShoot(result){
-        for (let i = 0; i <= 1;i++){
+        for (let i = 0; i <= 1; i++){
             if (result.clientID == this.gamers[i].id){
-                this.send(this.gamers[(i+1)%2], result);
+                this.send(this.gamers[(i + 1) % 2], result);
             }
         }
         var cell = result.res.cell;
